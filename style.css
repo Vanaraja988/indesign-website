@@ -1,0 +1,105 @@
+:root {
+    --primary: #111111;
+    --accent: #c5a47e;
+    --white: #ffffff;
+}
+header {
+    background: var(--white);
+}
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.6s;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.hero button {
+    background: var(--accent);
+    color: white;
+}
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url('images/hero.jpg') no-repeat center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* Overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+/* FIX: bring text above overlay */
+.hero * {
+    position: relative;
+    z-index: 2;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.item {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 18px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.item:hover::before {
+    opacity: 1;
+}
+
+.item:hover .overlay-text {
+    opacity: 1;
+}
+@media (max-width: 768px) {
+
+    header {
+        padding: 15px 20px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
